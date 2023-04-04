@@ -1,0 +1,14 @@
+WITH duration_by_customer_cte (first_name, last_name, total_rental_duration) AS
+    (SELECT first_name, 
+            last_name, 
+            SUM(rental_duration) AS total_rental_duration
+    FROM film A
+    INNER JOIN inventory B ON A.film_id = B.film_id
+    INNER JOIN rental C ON B.inventory_id = C.inventory_id
+    INNER JOIN customer D ON C.customer_id = D.customer_id
+    GROUP BY first_name, last_name
+    ORDER BY total_rental_duration DESC)
+SELECT MAX(total_rental_duration) AS Max_rental_duration, 
+       MIN(total_rental_duration) AS Min_rental_duration, 
+       AVG(total_rental_duration) AS Avg_rental_duration
+FROM duration_by_customer_cte
