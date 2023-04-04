@@ -12,4 +12,4 @@ My findings will be used to answer a series of key business questions posed by t
  a data set that contains information about Rockbuster’s film inventory, customers, and payments, among other things.
  [ Full data set]([url](http://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip))
 ## Data Vizualisation
-Data vizualisation using Tableau 
+[Data vizualisation using Tableau](Data vizualisation using Tableau)
