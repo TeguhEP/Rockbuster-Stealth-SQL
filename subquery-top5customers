@@ -1,0 +1,16 @@
+SELECT A.customer_id,
+	   first_name,
+	   last_name,
+	   C.city,
+	   D.country,
+	   SUM(amount) AS total_amount_paid
+FROM Customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+INNER JOIN payment E ON A.customer_id = E.customer_id
+WHERE city IN ('Aurora', 'Pingxiang', 'Sivas', 'Dhule(Dhulia)', 'Kurashiki', 
+			   'Xintai', 'Adoni', 'Celaya', 'Nezahualcyotl', 'Atlixco')
+GROUP BY A.customer_id, first_name, last_name, C.city, D.country
+ORDER BY 6 DESC
+LIMIT 5
